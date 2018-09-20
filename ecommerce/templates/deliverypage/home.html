@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Market</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Sample<font color = #FFFF00>Market</font> - Customer</a>
+    </div>
+    <!-- <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul> -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'addcustomer' %}"><span class="glyphicon glyphicon-plus"></span> Add Customer </a></li>
+      <li><a href="#"><font color = #D8BFD8><span class="glyphicon glyphicon-user"></span> {{ user.username }} </font></a></li>
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+   <div class="card">
+     <div class="card-body">
+       <div class="table-wrapper-2">
+       {% if customer_list %}
+              
+               <table class="table">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" id="checkall" /></th>
+                        <!-- <th id="customer_uuid">Customer ID</th> -->
+                        <th id="pm_id">#PM ID</th>
+                        <th id="first_name">First Name</th>
+                        <th id="second_name">Second Name</th>
+                        <!-- <th id="email_id">Email ID</th> -->
+                        <th id="mobile_no_primary">Primary Mobile No</th>
+                        <!-- <th id="mobile_no_secondary">Secondary Mobile No</th> -->
+                        <!-- <th id="customer_type">Customer Type</th> -->
+                        <th id="period">Period</th>
+                        <th id="quantity">Quantity</th>
+                        <th id="supplier_name">Supplier Name</th>
+                        <th id="date_of_join">Join Date</th>
+                        <!-- <th id="area_code">Area Code</th> -->
+                        <th id="address">Address</th>
+
+                      </tr></thead>
+                      {% for customer in customer_list %}
+                        <tbody>
+                          <tr>
+                              <td><input type="checkbox" class="checkthis" /></td>
+                              <!-- <td headers="customer_uuid">{{ customer.customer_uuid}}</td> -->
+                              <td headers="pm_id">{{ customer.pm_id}}</td>
+                              <td headers="first_name">{{ customer.first_name}}</td>
+                              <td headers="second_name">{{ customer.second_name}}</td>
+                              <!-- <td headers="email_id">{{ customer.email_id}}</td> -->
+                              <td headers="mobile_no_primary">{{ customer.mobile_no_primary}}</td>  
+                              <!-- <td headers="mobile_no_secondary">{{ customer.mobile_no_secondary}}</td>   -->
+                              <!-- <td headers="customer_type">{{ customer.customer_type}}</td>   -->
+                              <td headers="period">{{ customer.period}}</td>  
+                              <td headers="quantity">{{ customer.quantity}}</td>  
+                              <td headers="supplier_name">{{ customer.supplier_name}}</td>  
+                              <td headers="date_of_join">{{ customer.date_of_join}}</td>  
+                              <!-- <td headers="area_code">{{ customer.area_code}}</td>   -->
+                              <td headers="address">{{ customer.address}}</td>         
+                          </tr>
+                        </tbody>
+                      {% endfor %} 
+                      </table>                                 
+            {% else %}
+              <strong>There are no serever present.</strong>
+        {% endif %}
+        </div>
+     </div>
+   </div>         
+</div>
+</body>
+</html>

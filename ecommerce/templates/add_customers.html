@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>customer details</title>
+  </head>
+ <body>
+  <div>
+  <center><p>Add Server</p></center>
+    {% block body %}
+        <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          <center><p>
+            {{ field.label_tag }}<br>
+            {{field}}
+            {% if field.help_text %}<br>
+              <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}<br>
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p></center>
+        {% endfor %}
+        <center><button type="submit">Submit</button></center>
+     </form>{% endblock %}
+  </div>
+</body>
+</html>
